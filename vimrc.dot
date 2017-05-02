@@ -1,0 +1,51 @@
+filetype plugin indent on
+" show existing tab with 4 spaces width
+set tabstop=4
+" when indenting with '>' use 4 spaces width
+set shiftwidth=4
+" On pressing tab, insert 4 spaces
+set expandtab
+
+" vim-plug
+call plug#begin('~/.vim/plugged')
+Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
+Plug 'tpope/vim-unimpaired'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'ensime/ensime-vim'
+Plug 'derekwyatt/vim-scala'
+Plug 'vim-syntastic/syntastic'
+Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
+call plug#end()
+
+" vim-go colors
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+" vim-go make everything a quickfix window
+let g:go_list_type = "quickfix"
+" let goimports handle formatting
+let g:go_fmt_command = "goimports"
+let g:go_metalinter_autosave = 1
+let g:go_metalinter_deadline = "5s"
+
+" save when focus is lost
+set autowrite
+" line numbers for all files all the time
+set number
+
+" ctrlp stuff
+" set runtimepath^=~/.vim/bundle/ctrlp.vim
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_custom_ignore= {
+    \ 'dir': '\v(vendor|\.git|node_modules)$'
+    \ }
+
+" autoclose the preview window that omnicomplete pops up
+autocmd CompleteDone * pclose
+
+" use jsx highlighting on JS and JSX files
+let g:jsx_ext_required = 0
+
+" allright.... gonna do some filetype specific indentions
+autocmd FileType javascript setlocal shiftwidth=2 tabstop=2
