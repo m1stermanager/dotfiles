@@ -1,0 +1,26 @@
+# C-b r to refresh tmux config
+bind r source-file ~/.tmux.conf
+
+# set vi mode
+setw -g mode-keys vi
+
+# pane resize to match vim motion
+bind -r C-h resize-pane -L
+bind -r C-j resize-pane -D
+bind -r C-k resize-pane -U
+bind -r C-l resize-pane -R
+
+# allright I give, lets make the prefix C-a (C-b is page down in vim and i feel like preserving that is more important)
+unbind C-b
+set -g prefix C-a
+
+# so we have to use this in order for clipboard and other totally random things to work. 
+set-option -g default-command "reattach-to-user-namespace -l zsh"
+
+# Setup 'v' to begin selection as in Vim
+bind-key -t vi-copy v begin-selection
+bind-key -t vi-copy y copy-pipe "reattach-to-user-namespace pbcopy"
+#
+# # Update default binding of `Enter` to also use copy-pipe
+unbind -t vi-copy Enter
+bind-key -t vi-copy Enter copy-pipe "reattach-to-user-namespace pbcopy"
