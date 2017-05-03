@@ -33,6 +33,8 @@ let g:go_metalinter_deadline = "5s"
 set autowrite
 " line numbers for all files all the time
 set number
+" relative numbers as well....
+set relativenumber
 
 " ctrlp stuff
 " set runtimepath^=~/.vim/bundle/ctrlp.vim
