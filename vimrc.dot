@@ -52,3 +52,6 @@ let g:jsx_ext_required = 0
 
 " allright.... gonna do some filetype specific indentions
 autocmd FileType javascript setlocal shiftwidth=2 tabstop=2
+
+" apparently my backspace is all jacked up... needs more research
+set backspace=indent,eol,start
