@@ -13,6 +13,7 @@ Plug 'tpope/vim-unimpaired'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'ensime/ensime-vim'
 Plug 'derekwyatt/vim-scala'
+Plug 'derekwyatt/vim-sbt'
 Plug 'vim-syntastic/syntastic'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
@@ -46,6 +47,7 @@ let g:ctrlp_custom_ignore= {
 
 " autoclose the preview window that omnicomplete pops up
 autocmd CompleteDone * pclose
+set omnifunc=syntaxcomplete#Complete
 
 " use jsx highlighting on JS and JSX files
 let g:jsx_ext_required = 0
@@ -55,3 +57,25 @@ autocmd FileType javascript setlocal shiftwidth=2 tabstop=2
 
 " apparently my backspace is all jacked up... needs more research
 set backspace=indent,eol,start
+
+" netrw stuff
+let g:netrw_liststyle = 3
+
+let g:syntastic_ignore_files = ['.sbt$', '.scala$']
+
+" Scala has fsc and scalac checkers--running both is pretty redundant and
+" slow. An explicit `:SyntasticCheck scalac` can always run the other.
+let g:syntastic_scala_checkers = ['fsc']
+
+"""
+" scala/ensime
+"""
+
+" ensime breaks without this
+let ensime_server_v2=1
+let $ENSIME_VIM_DEBUG = 1
+
+autocmd FileType scala,java set omnifunc=EnCompleteFunc
+
+" auto-type check scala files after save
+autocmd BufWritePost *.scala silent :EnTypeCheck
