@@ -18,6 +18,9 @@ Plug 'vim-syntastic/syntastic'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'tpope/vim-commentary'
+Plug 'vim-scripts/indentpython.vim'
+Plug 'bitc/vim-bad-whitespace'
+Plug 'davidhalter/jedi-vim'
 call plug#end()
 
 " vim-go colors
@@ -42,7 +45,7 @@ set relativenumber
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_custom_ignore= {
-    \ 'dir': '\v(vendor|\.git|node_modules)$'
+    \ 'dir': '\v(vendor|\.git|node_modules|target|metastore_db)$'
     \ }
 
 " autoclose the preview window that omnicomplete pops up
@@ -61,7 +64,7 @@ set backspace=indent,eol,start
 " netrw stuff
 let g:netrw_liststyle = 3
 
-let g:syntastic_ignore_files = ['.sbt$', '.scala$']
+let g:syntastic_ignore_files = ['.sbt$', '.scala$', '.py$']
 
 " Scala has fsc and scalac checkers--running both is pretty redundant and
 " slow. An explicit `:SyntasticCheck scalac` can always run the other.
@@ -79,3 +82,27 @@ autocmd FileType scala,java set omnifunc=EnCompleteFunc
 
 " auto-type check scala files after save
 autocmd BufWritePost *.scala silent :EnTypeCheck
+
+" we've gotta work with python today! 
+" everything here conforms to pep8. I don't know what that is yet but i love standards
+"au BufNewFile,BufRead *.py
+"    \ set tabstop=4
+"    \ set softtabstop=4
+"    \ set shiftwidth=4
+"    \ set textwidth=79
+"    \ set expandtab
+"    \ set autoindent
+"    \ set fileformat=unix
+
+" flag extraneous whitespace?!?!?
+au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
+
+"python with virtualenv support... i know literally nothing about this
+py << EOF
+import os
+import sys
+if 'VIRTUAL_ENV' in os.environ:
+  project_base_dir = os.environ['VIRTUAL_ENV']
+  activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
+  execfile(activate_this, dict(__file__=activate_this))
+EOF
