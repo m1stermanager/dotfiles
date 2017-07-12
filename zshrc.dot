@@ -52,7 +52,7 @@ ZSH_THEME="avit"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git wd web-search brew docker kubectl)
+plugins=(git wd web-search brew docker kubectl virtualenv)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -86,6 +86,7 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 source ~/.env-var
+source ~/.private-aliases
 
-alias gta='go test $(go list ./... | grep -v vendor | grep -v fakes) -cover --tags=test'
+alias gta='go test $(go list ./... | grep -v vendor | grep -v fakes) -cover'
 alias whatsupdocker='docker stats --format "table {{.Container}}\t{{.Name}}\t{{.NetIO}}\t{{.MemUsage}}\t{{.CPUPerc}}"'
