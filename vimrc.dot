@@ -15,39 +15,25 @@ set expandtab
 " vim-plug
 call plug#begin('~/.vim/plugged')
 Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
-Plug 'tpope/vim-unimpaired'
 Plug 'ctrlpvim/ctrlp.vim'
-Plug 'ensime/ensime-vim'
-Plug 'derekwyatt/vim-scala'
-Plug 'derekwyatt/vim-sbt'
-Plug 'vim-syntastic/syntastic'
-Plug 'pangloss/vim-javascript'
-Plug 'mxw/vim-jsx'
-Plug 'tpope/vim-commentary'
-Plug 'vim-scripts/indentpython.vim'
-Plug 'bitc/vim-bad-whitespace'
-Plug 'davidhalter/jedi-vim'
-Plug 'qualiabyte/vim-colorstepper'
+Plug 'vim-airline/vim-airline'
 call plug#end()
 
 " things related to go
 " vim-go colors
-let g:go_highlight_functions = 1
-let g:go_highlight_methods = 1
-" vim-go make everything a quickfix window
-let g:go_list_type = "quickfix"
-" let goimports handle formatting
-let g:go_fmt_command = "goimports"
+" let g:go_highlight_functions = 1
+" let g:go_highlight_methods = 1
+" let g:go_highlight_fields = 1
+" let g:go_highlight_types = 1
+" let g:go_highlight_operators = 1
+" " let goimports handle formatting
+" let g:go_fmt_command = "goimports"
 let g:go_metalinter_autosave = 1
-let g:go_metalinter_deadline = "5s"
+" let g:go_metalinter_deadline = "5s"
 
-" <localleader> gt to to run GoTest
-autocmd FileType go nmap <localleader>t :GoTest<cr>
-autocmd FileType go nmap <localleader>b :GoBuild<cr>
-autocmd FileType go nmap <localleader>al :GoAlternate<cr>
+" apparently my backspace is all jacked up... needs more research
+set backspace=indent,eol,start
 
-" save when focus is lost
-set autowrite
 " line numbers for all files all the time
 set number
 " relative numbers as well....
@@ -64,53 +50,3 @@ let g:ctrlp_custom_ignore= {
 " autoclose the preview window that omnicomplete pops up
 autocmd CompleteDone * pclose
 set omnifunc=syntaxcomplete#Complete
-
-" use jsx highlighting on JS and JSX files
-let g:jsx_ext_required = 0
-
-" allright.... gonna do some filetype specific indentions
-autocmd FileType javascript setlocal shiftwidth=2 tabstop=2
-
-" apparently my backspace is all jacked up... needs more research
-set backspace=indent,eol,start
-
-" netrw stuff
-let g:netrw_liststyle = 3
-
-let g:syntastic_ignore_files = ['.sbt$', '.scala$', '.py$']
-
-"""
-" scala/ensime
-"""
-" ensime breaks without this
-let ensime_server_v2=1
-let $ENSIME_VIM_DEBUG = 1
-
-autocmd FileType scala,java set omnifunc=EnCompleteFunc
-
-" auto-type check scala files after save
-autocmd BufWritePost *.scala silent :EnTypeCheck
-
-" we've gotta work with python today!
-" everything here conforms to pep8. I don't know what that is yet but i love standards
-au BufNewFile,BufRead *.py
-    \ set tabstop=4 |
-    \ set softtabstop=4 |
-    \ set shiftwidth=4 |
-    \ set textwidth=79 |
-    \ set expandtab |
-    \ set autoindent |
-    \ set fileformat=unix
-
-" flag extraneous whitespace?!?!?
-au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
-
-"python with virtualenv support... i know literally nothing about this
-py << EOF
-import os
-import sys
-if 'VIRTUAL_ENV' in os.environ:
-  project_base_dir = os.environ['VIRTUAL_ENV']
-  activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
-  execfile(activate_this, dict(__file__=activate_this))
-EOF

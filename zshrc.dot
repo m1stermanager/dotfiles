@@ -3,7 +3,6 @@
 DEFAULT_USER=josh.smith
 # Path to your oh-my-zsh installation.
 export ZSH=~/.oh-my-zsh
-export GOPATH=~/projects/go
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -52,7 +51,7 @@ ZSH_THEME="avit"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git wd web-search brew docker kubectl virtualenv)
+plugins=(git wd web-search brew docker kubectl)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -90,3 +89,7 @@ source ~/.private-aliases
 
 alias gta='go test $(go list ./... | grep -v vendor | grep -v fakes) -cover'
 alias whatsupdocker='docker stats --format "table {{.Container}}\t{{.Name}}\t{{.NetIO}}\t{{.MemUsage}}\t{{.CPUPerc}}"'
+export TERM=screen-256color
+
+
+eval $(thefuck --alias)

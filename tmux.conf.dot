@@ -14,7 +14,7 @@ bind -r C-l resize-pane -R
 unbind C-b
 set -g prefix C-a
 
-# setup copy/paste to act like vim, reattach to username space.... etc etc 
+# setup copy/paste to act like vim, reattach to username space.... etc etc
 bind-key -T edit-mode-vi Up send-keys -X history-up
 bind-key -T edit-mode-vi Down send-keys -X history-down
 unbind-key -T copy-mode-vi Space     ;   bind-key -T copy-mode-vi v send-keys -X begin-selection
@@ -28,3 +28,8 @@ set-option -g set-titles on
 
 # reattach to usernamespace when everything fires up
 set-option -g default-command "reattach-to-user-namespace -l zsh"
+
+#set escape timeout to 0 to avoid annoying delays
+set -s escape-time 0
+
+set -g default-terminal "xterm"
