@@ -1,6 +1,6 @@
 # If you come from bash you might have to change your $PATH.
 #export PATH=$HOME/bin:/usr/local/bin:$PATH
-DEFAULT_USER=josh.smith
+DEFAULT_USER=josh
 # Path to your oh-my-zsh installation.
 export ZSH=~/.oh-my-zsh
 
@@ -90,6 +90,3 @@ source ~/.private-aliases
 alias gta='go test $(go list ./... | grep -v vendor | grep -v fakes) -cover'
 alias whatsupdocker='docker stats --format "table {{.Container}}\t{{.Name}}\t{{.NetIO}}\t{{.MemUsage}}\t{{.CPUPerc}}"'
 export TERM=screen-256color
-
-
-eval $(thefuck --alias)
