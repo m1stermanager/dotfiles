@@ -1,8 +1,14 @@
-# C-a r to refresh tmux config
-bind r source-file ~/.tmux.conf
+# remap prefix to Control + a
+set -g prefix C-a
+# bind 'C-a C-a' to type 'C-a'
+bind C-a send-prefix
+unbind C-b
 
 # set vi mode
 setw -g mode-keys vi
+
+# C-a r to refresh tmux config
+bind r source-file ~/tmux.conf
 
 # pane resize to match vim motion
 bind -r C-h resize-pane -L
@@ -10,9 +16,6 @@ bind -r C-j resize-pane -D
 bind -r C-k resize-pane -U
 bind -r C-l resize-pane -R
 
-# allright I give, lets make the prefix C-a (C-b is page down in vim and i feel like preserving that is more important)
-unbind C-b
-set -g prefix C-a
 
 # setup copy/paste to act like vim, reattach to username space.... etc etc
 bind-key -T edit-mode-vi Up send-keys -X history-up
@@ -33,3 +36,4 @@ set-option -g default-command "reattach-to-user-namespace -l zsh"
 set -s escape-time 0
 
 set -g default-terminal "xterm"
+
