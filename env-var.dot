@@ -1,3 +1,5 @@
 # !/bin/bash
 
 # nothing lives here by default
+
+GOPATH=$HOME/src/go

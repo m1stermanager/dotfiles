@@ -1,4 +1,11 @@
 #! /bin/bash
 
-ln -sf tmux.conf.dot ~/.tmux.conf
-ln -sf vimrc.dot ~/.vimrc
+rm -f ~/.tmux.conf
+rm -f ~/.vimrc
+rm -f ~/.env-var
+rm -f ~/.zshrc
+
+ln -sf $PWD/tmux.conf.dot ~/.tmux.conf
+ln -sf $PWD/vimrc.dot ~/.vimrc
+ln -sf $PWD/env-var.dot ~/.env-var
+ln -sf $PWD/zshrc.dot ~/.zshrc
