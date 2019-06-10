@@ -3,3 +3,8 @@
 # nothing lives here by default
 
 GOPATH=$HOME/src/go
+
+# I want to just do `cd $MYGO`
+MYGO=$GOPATH/src/github.com/m1stermanager
+
+PATH=$PATH:$GOPATH/bin:$HOME/go/bin

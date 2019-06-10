@@ -4,8 +4,10 @@ rm -f ~/.tmux.conf
 rm -f ~/.vimrc
 rm -f ~/.env-var
 rm -f ~/.zshrc
+rm -f ~/.spacemacs
 
 ln -sf $PWD/tmux.conf.dot ~/.tmux.conf
 ln -sf $PWD/vimrc.dot ~/.vimrc
 ln -sf $PWD/env-var.dot ~/.env-var
 ln -sf $PWD/zshrc.dot ~/.zshrc
+ln -sf $PWD/spacemacs.dot ~/.spacemacs
