@@ -18,6 +18,8 @@ Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'tpope/vim-commentary'
+Plug 'OmniSharp/omnisharp-vim'
+Plug 'Valloric/YouCompleteMe'
 call plug#end()
 
 " things related to go
@@ -48,6 +50,16 @@ let g:ctrlp_custom_ignore= {
     \ 'dir': '\v(vendor|\.git|node_modules|target|metastore_db)$'
     \ }
 
-" autoclose the preview window that omnicomplete pops up
-" autocmd CompleteDone * pclose
-" set omnifunc=syntaxcomplete#Complete
+" very specific to omnisharp
+" recommended for vim 8+.... allows some async stuff to happen
+let g:OmniSharp_server_stdio = 1
+" csharp highlighting
+let g:OmniSharp_highlight_types = 2
+let g:OmniSharp_highlight_groups = {
+\ 'csUserIdentifier': [
+\   'constant name', 'enum member name', 'field name', 'identifier',
+\   'local name', 'parameter name', 'property name', 'static symbol'],
+\ 'csUserInterface': ['interface name'],
+\ 'csUserMethod': ['extension method name', 'method name'],
+\ 'csUserType': ['class name', 'enum name', 'namespace name', 'struct name']
+\}
