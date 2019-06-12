@@ -63,3 +63,6 @@ let g:OmniSharp_highlight_groups = {
 \ 'csUserMethod': ['extension method name', 'method name'],
 \ 'csUserType': ['class name', 'enum name', 'namespace name', 'struct name']
 \}
+
+"don't popup the little preview info window in omnicomplete
+set completeopt-=preview
