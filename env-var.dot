@@ -2,9 +2,6 @@
 
 # nothing lives here by default
 
-GOPATH=$HOME/src/go
+export PATH=$PATH:$HOME/go/bin
 
-# I want to just do `cd $MYGO`
-MYGO=$GOPATH/src/github.com/m1stermanager
-
-PATH=$PATH:$GOPATH/bin:$HOME/go/bin
+export GO111MODULE=on
