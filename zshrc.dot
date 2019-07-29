@@ -85,7 +85,7 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 source ~/.env-var
-source ~/.private-aliases
+#source ~/.private-aliases
 
 alias gta='go test $(go list ./... | grep -v vendor | grep -v fakes) -cover'
 alias whatsupdocker='docker stats --format "table {{.Container}}\t{{.Name}}\t{{.NetIO}}\t{{.MemUsage}}\t{{.CPUPerc}}"'
