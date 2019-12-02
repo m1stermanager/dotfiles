@@ -4,4 +4,11 @@
 
 export PATH=$PATH:$HOME/go/bin
 
+# some symfony specific stuff...
+export PATH="$HOME/.symfony/bin:$PATH"
+# some composer specific stuff....
+export PATH="$HOME/.composer/vendor/bin:$PATH"
+
+
+
 export GO111MODULE=on

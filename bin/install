@@ -1,20 +1,23 @@
 #!/bin/bash
 
-# install homebrew.....
-echo 'getting homebrew......'
-/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" > /dev/null
-
 echo 'dotnet stuff........'
 brew cask install dotnet-sdk visual-studio-code > /dev/null
 
 echo 'go stuff........'
 brew install go > /dev/null
 
+echo 'php stuff....'
+brew install php composer > /dev/null
+
 echo 'ide adjacent things'
-brew install zsh vim tmux reattach-to-user-namespace > /dev/null
+brew install zsh vim tmux reattach-to-user-namespace kitty > /dev/null
 
 echo 'random stuff (git, jq, etc)'
 brew install jq git awscli > /dev/null
 
 echo 'chrome, slack, etc'
-brew cask install docker google-chrome slack
+brew cask install docker google-chrome slack dbeaver-community spotify zoomus > /dev/null
+
+echo 'tap aws and get more aws things....'
+brew tap aws/tap
+brew install awscli aws-sam-cli > /dev/null

@@ -26,7 +26,7 @@ ZSH_THEME="avit"
 # DISABLE_LS_COLORS="true"
 
 # Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
+ DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
 # ENABLE_CORRECTION="true"
@@ -90,3 +90,21 @@ source ~/.env-var
 alias gta='go test $(go list ./... | grep -v vendor | grep -v fakes) -cover'
 alias whatsupdocker='docker stats --format "table {{.Container}}\t{{.Name}}\t{{.NetIO}}\t{{.MemUsage}}\t{{.CPUPerc}}"'
 export TERM=screen-256color
+
+# Daily Notes Aliases
+dn() {
+  echo " * $1" >> ~/dn/$(date "+%Y-%m-%d")
+}
+
+dno() {
+  echo " * $2" >> ~/dn/$1
+}
+
+dnt() {
+  echo $(date "+%Y-%m-%d")
+  cat ~/dn/$(date "+%Y-%m-%d")
+}
+
+dnview() {
+  find ~/dn/$1* -type f -exec basename {} \; -exec cat {} \;
+}
