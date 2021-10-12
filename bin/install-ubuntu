@@ -1,0 +1,18 @@
+#!/bin/bash
+
+# everything pythony
+sudo add-apt-repository ppa:deadsnakes/ppa
+# for vim 8.X
+sudo add-apt-repository ppa:jonathonf/vim
+
+sudo apt-get update
+
+sudo apt-get install -y software-properties-common
+
+sudo apt-get install -y python3.6 python3.7 python3.8 python3.9 python-pip python3.6-venv python3.7-venv python3.8-venv python3.9-venv
+
+sudo apt-get install git tmux vim
+
+# vim plug...
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
